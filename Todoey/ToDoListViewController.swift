@@ -16,6 +16,12 @@ class ToDoListViewController: UITableViewController {
         super.viewDidLoad()
         
     }
+    
+    // Tableview datasource methods
+    // create three cells 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        itemArray.count
+    }
 
 
 }
