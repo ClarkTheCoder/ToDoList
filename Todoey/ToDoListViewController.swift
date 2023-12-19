@@ -9,10 +9,12 @@
 import UIKit
 
 class ToDoListViewController: UITableViewController {
+    
+    let itemArray = ["Get kinder eggs", "Buy eggs", "Get pepper"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("loaded")
+        
     }
 
 
