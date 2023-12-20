@@ -23,6 +23,14 @@ class ToDoListViewController: UITableViewController {
         itemArray.count
     }
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
+        
+        // optional chaining - textLabel is nil, property won't be called
+        cell.textLabel?.text = itemArray[indexPath.row]
+        
+        return cell
+    }
 
 }
 
