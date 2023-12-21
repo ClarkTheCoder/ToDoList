@@ -31,7 +31,13 @@
                             <outlet property="delegate" destination="ae2-SA-kn8" id="7Yv-3y-JSb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Checklist " id="7hW-uJ-HSk"/>
+                    <navigationItem key="navigationItem" title="Checklist " id="7hW-uJ-HSk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gth-aw-rqg">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="ae2-SA-kn8" id="WMH-EY-dip"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VMI-yD-M3O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

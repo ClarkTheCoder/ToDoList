@@ -10,15 +10,15 @@ import UIKit
 
 class ToDoListViewController: UITableViewController {
     
-    let itemArray = ["Get kinder eggs", "Buy eggs", "Get pepper"]
+    var itemArray = ["Get kinder eggs", "Buy eggs", "Get pepper"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("loaded")
+
     }
     
     // Tableview datasource methods
-    // create three cells 
+    // create three rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         itemArray.count
     }
@@ -47,7 +47,35 @@ class ToDoListViewController: UITableViewController {
         // prevents item from staying highlighted
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
+    
+    @IBAction func addButtonPressed(_ sender: Any) {
+        // creating this variable so I can effectively grab data from addTextField and use it in UIAlertAction
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add Item", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Add Item", style: .default) { action in
+            // what happens once user clicks the add item button on UIAlert
+            if let newItemText = textField.text {
+                self.itemArray.append(newItemText)
+            } else {
+                print("Please add item")
+            }
+            self.tableView.reloadData()
+        }
+        
+        // alertTextField is the name I'm giving to the UITextField that I created here
+        alert.addTextField { alertTextField in
+            alertTextField.placeholder = "Add an item here"
+            textField = alertTextField
+        }
+        alert.addAction(action)
+        
+        present(alert, animated: true) {
+            
+        }
+    }
+    
 }
 
 
