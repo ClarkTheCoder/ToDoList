@@ -14,7 +14,7 @@ class ToDoListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("loaded")
     }
     
     // Tableview datasource methods
@@ -31,6 +31,23 @@ class ToDoListViewController: UITableViewController {
         
         return cell
     }
+    
+    // Tableview delegate methods
+    
+    // this method informs delegate of current row selected
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // grabs reference to a cell at particular indexpath
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType == .none
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark
+        }
+            
+        // prevents item from staying highlighted
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
 }
+
 
