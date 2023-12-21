@@ -59,7 +59,7 @@ class ToDoListViewController: UITableViewController {
             if let newItemText = textField.text {
                 self.itemArray.append(newItemText)
             } else {
-                print("Please add item")
+                self.itemArray.append("New Item")
             }
             self.tableView.reloadData()
         }
