@@ -24,11 +24,6 @@ class ToDoListViewController: UITableViewController {
         let newItem2 = Item()
         newItem2.title = "Find Sarah"
         itemArray.append(newItem2)
-    
-        
-//        if let safeArray = defaults.array(forKey: "ToDoListArray") as? [String] {
-//            itemArray = safeArray
-//        }
 
     }
     
@@ -42,14 +37,11 @@ class ToDoListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
+        let item = itemArray[indexPath.row]
         
-        print("cellforrowat")
+        cell.textLabel?.text = item.title
         
-        // optional chaining - textLabel is nil, property won't be called
-        // set text for cell
-        cell.textLabel?.text = itemArray[indexPath.row].title
-        
-        if itemArray[indexPath.row].done == true {
+        if item.done == true {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -64,7 +56,7 @@ class ToDoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // get current item that's selected and update done property
-        itemArray[indexPath.row].done = itemArray[indexPath.row].done == true ? false : true
+        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
         // forces tableview to call its datasource methods again
         tableView.reloadData()
