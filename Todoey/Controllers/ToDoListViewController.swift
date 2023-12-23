@@ -41,11 +41,7 @@ class ToDoListViewController: UITableViewController {
         
         cell.textLabel?.text = item.title
         
-        if item.done == true {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
-        }
+        cell.accessoryType = item.done ? .checkmark : .none
         
         return cell
     }
@@ -55,7 +51,6 @@ class ToDoListViewController: UITableViewController {
     // this method informs delegate of current row selected (indexpath)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // get current item that's selected and update done property
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
         // forces tableview to call its datasource methods again
