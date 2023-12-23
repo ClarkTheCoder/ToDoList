@@ -18,17 +18,7 @@ class ToDoListViewController: UITableViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        let newItem = Item()
-        newItem.title = "Find Mike"
-        itemArray.append(newItem)
-        
-        let newItem2 = Item()
-        newItem2.title = "Find Sarah"
-        itemArray.append(newItem2)
-        
-//        if let items = defaults.array(forKey: "ToDoListArray") as? [Item] {
-//            itemArray = items
-//        }
+        loadItems()
 
     }
     
@@ -117,6 +107,17 @@ class ToDoListViewController: UITableViewController {
         
         // forces tableview to call its datasource methods again
         tableView.reloadData()
+    }
+    
+    func loadItems() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                let itemArray = try decoder.decode([Item].self, from: data)
+            } catch {
+                print(error)
+            }
+        }
     }
 }
 
