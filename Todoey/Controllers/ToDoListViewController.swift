@@ -22,7 +22,7 @@ class ToDoListViewController: UITableViewController {
 
     }
     
-    // Tableview datasource methods
+    // Tableview datasource methods fi
    
     // create three rows
     // method responsible for displaying cells
@@ -113,7 +113,7 @@ class ToDoListViewController: UITableViewController {
         if let data = try? Data(contentsOf: dataFilePath!) {
             let decoder = PropertyListDecoder()
             do {
-                let itemArray = try decoder.decode([Item].self, from: data)
+                itemArray = try decoder.decode([Item].self, from: data)
             } catch {
                 print(error)
             }
