@@ -11,7 +11,7 @@ import UIKit
 class ToDoListViewController: UITableViewController {
     
     var itemArray = [Item]()
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items1.plist")
     
 //    let defaults = UserDefaults.standard
 
@@ -68,9 +68,6 @@ class ToDoListViewController: UITableViewController {
             // what happens once user clicks the add item button on UIAlert
             // add new item to itemArray
             if textField.text != nil {
-                self.itemArray.append(newItem)
-            } else {
-                newItem.title = "New Item"
                 self.itemArray.append(newItem)
             }
             
