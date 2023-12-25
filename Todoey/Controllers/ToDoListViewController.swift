@@ -19,7 +19,6 @@ class ToDoListViewController: UITableViewController {
         super.viewDidLoad()
         
         loadItems()
-
     }
     
     // Tableview datasource methods fi
