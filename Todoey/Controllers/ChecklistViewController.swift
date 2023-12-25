@@ -13,6 +13,8 @@ class ChecklistViewController: UITableViewController {
     
     // create empty array of checklists
     var checklistArray = [Checklist]()
+    // create file path to checklist plist
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Checklists.plist")
     
     override func viewDidLoad(){
         super.viewDidLoad()
