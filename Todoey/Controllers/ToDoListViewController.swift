@@ -46,11 +46,12 @@ class ToDoListViewController: UITableViewController {
     // this method informs delegate of current row selected (indexpath)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        // toggle completed item
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-        
+    
         saveItems()
         
-        // prevents item from staying highlighted
+        // prevents cell from staying highlighted
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -75,12 +76,8 @@ class ToDoListViewController: UITableViewController {
             }
             
             self.saveItems()
-            
-            // self.defaults.set(self.itemArray, forKey: "ToDoListArray")
-            self.tableView.reloadData()
         }
         
-        // alertTextField is the name I'm giving to the UITextField that I created here
         alert.addTextField { alertTextField in
             alertTextField.placeholder = "Add an item here"
             textField = alertTextField
