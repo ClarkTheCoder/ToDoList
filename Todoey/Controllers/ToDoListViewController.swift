@@ -70,9 +70,6 @@ class ToDoListViewController: UITableViewController {
             // add new item to itemArray
             if textField.text != nil {
                 self.itemArray.append(newItem)
-            } else {
-                newItem.title = "New Item"
-                self.itemArray.append(newItem)
             }
             
             self.saveItems()
