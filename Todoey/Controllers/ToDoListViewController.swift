@@ -18,11 +18,11 @@ class ToDoListViewController: UITableViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         
-//        loadItems()
+        loadItems()
 
     }
     
-    // Tableview datasource methods fi
+    // Tableview datasource methods
    
     // create three rows
     // method responsible for displaying cells
@@ -65,7 +65,7 @@ class ToDoListViewController: UITableViewController {
             
             let newItem = Item(context: self.context)
             newItem.title = textField.text!
-            newItem.done = true
+            newItem.done = false
             
             // what happens once user clicks the add item button on UIAlert
             // add new item to itemArray
@@ -97,16 +97,16 @@ class ToDoListViewController: UITableViewController {
         tableView.reloadData()
     }
     
-//    func loadItems() {
-//        if let data = try? Data(contentsOf: dataFilePath!) {
-//            let decoder = PropertyListDecoder()
-//            do {
-//                itemArray = try decoder.decode([Item].self, from: data)
-//            } catch {
-//                print(error)
-//            }
-//        }
-//    }
+    func loadItems() {
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        do { 
+            // returns NSFetchRequest Result
+            itemArray = try context.fetch(request)
+        } catch {
+            print(error)
+        }
+        
+    }
 }
 
 
