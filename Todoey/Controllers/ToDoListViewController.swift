@@ -19,7 +19,6 @@ class ToDoListViewController: UITableViewController {
         super.viewDidLoad()
         
         loadItems()
-
     }
     
     // Tableview datasource methods
@@ -46,8 +45,8 @@ class ToDoListViewController: UITableViewController {
     // this method informs delegate of current row selected (indexpath)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        context.delete(itemArray[indexPath.row])
-        itemArray.remove(at: indexPath.row)
+//        context.delete(itemArray[indexPath.row])
+//        itemArray.remove(at: indexPath.row)
 
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
     
@@ -106,6 +105,7 @@ class ToDoListViewController: UITableViewController {
             print(error)
         }
         
+        tableView.reloadData()
     }
 
 }
@@ -113,6 +113,7 @@ class ToDoListViewController: UITableViewController {
 //MARK: UISearchBar methods
 
 extension ToDoListViewController: UISearchBarDelegate {
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let request: NSFetchRequest<Item> = Item.fetchRequest()
         
