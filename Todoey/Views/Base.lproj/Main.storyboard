@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Category View Controller-->
         <scene sceneID="f4L-eh-LlE">
             <objects>
-                <tableViewController id="MYW-Hb-y6w" sceneMemberID="viewController">
+                <tableViewController id="MYW-Hb-y6w" customClass="CategoryViewController" customModule="Todoey" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="aIB-Xd-Qsz">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="iYo-fO-Rut"/>
                     <connections>
-                        <segue destination="ae2-SA-kn8" kind="show" id="nbQ-sf-aDh"/>
+                        <segue destination="ae2-SA-kn8" kind="show" identifier="goToItems" id="nbQ-sf-aDh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWu-eG-zEF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

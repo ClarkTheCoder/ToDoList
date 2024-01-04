@@ -90,7 +90,6 @@ class ToDoListViewController: UITableViewController {
         }
         tableView.reloadData()
     }
-
 }
 
 //MARK: UISearchBar methods
