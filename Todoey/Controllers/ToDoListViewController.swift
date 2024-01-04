@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Todoey
-//
-//  Created by Philipp Muellauer on 02/12/2019.
-//  Copyright © 2019 App Brewery. All rights reserved.
-//
 
 import UIKit
 import CoreData
@@ -21,9 +14,7 @@ class ToDoListViewController: UITableViewController {
         loadItems()
     }
     
-    // Tableview datasource methods
-   
-    // create three rows
+    //MARK: Tableview datasource methods
     // method responsible for displaying cells
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         itemArray.count
@@ -34,13 +25,12 @@ class ToDoListViewController: UITableViewController {
         let item = itemArray[indexPath.row]
         
         cell.textLabel?.text = item.title
-        
         cell.accessoryType = item.done ? .checkmark : .none
         
         return cell
     }
     
-    // Tableview delegate methods
+    //MARK: Tableview delegate methods
     
     // this method informs delegate of current row selected (indexpath)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -57,18 +47,14 @@ class ToDoListViewController: UITableViewController {
     
     
     @IBAction func addButtonPressed(_ sender: Any) {
-        // creating this variable so I can effectively grab data from addTextField and use it in UIAlertAction
         var textField = UITextField()
         
         let alert = UIAlertController(title: "Add Item", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Item", style: .default) { action in
-            
             let newItem = Item(context: self.context)
             newItem.title = textField.text!
             newItem.done = false
             
-            // what happens once user clicks the add item button on UIAlert
-            // add new item to itemArray
             if textField.text != nil {
                 self.itemArray.append(newItem)
             }
@@ -92,8 +78,6 @@ class ToDoListViewController: UITableViewController {
         }catch {
             print("error saing content \(error)")
         }
-        
-        // forces tableview to call its datasource methods again
         tableView.reloadData()
     }
     
@@ -104,7 +88,6 @@ class ToDoListViewController: UITableViewController {
         } catch {
             print(error)
         }
-        
         tableView.reloadData()
     }
 
@@ -116,11 +99,15 @@ extension ToDoListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let request: NSFetchRequest<Item> = Item.fetchRequest()
-        
         request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-        
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        
         loadItems(with: request)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadItems()
+            resignFirstResponder()
+        }
     }
 }
