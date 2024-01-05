@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Category View Controller-->
+        <!--To Do Items-->
         <scene sceneID="f4L-eh-LlE">
             <objects>
                 <tableViewController id="MYW-Hb-y6w" customClass="CategoryViewController" customModule="Todoey" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="7hT-Mo-ZzF">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="7hT-Mo-ZzF">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7hT-Mo-ZzF" id="a51-Vc-fJN">
@@ -31,7 +31,13 @@
                             <outlet property="delegate" destination="MYW-Hb-y6w" id="AXr-vO-KMW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="iYo-fO-Rut"/>
+                    <navigationItem key="navigationItem" title="To Do Items" id="iYo-fO-Rut">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="KVO-il-EnO">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="MYW-Hb-y6w" id="8kB-fP-TeU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="ae2-SA-kn8" kind="show" identifier="goToItems" id="nbQ-sf-aDh"/>
                     </connections>
