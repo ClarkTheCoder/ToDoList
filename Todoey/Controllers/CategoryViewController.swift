@@ -60,12 +60,24 @@ class CategoryViewController: UITableViewController {
     
     //MARK: - Tableview Delegate Methods
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToItems", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ToDoListViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCategory = categories[indexPath.row]
+        }
+    }
+    
     //MARK: - Data Manipulation Methods
     
     func loadCategories() {
         let request: NSFetchRequest<Category> = Category.fetchRequest()
         do {
-            try context.fetch(request)
+            categories = try context.fetch(request)
         } catch {
             print(error)
         }
